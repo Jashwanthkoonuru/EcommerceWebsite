@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: react_app
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: node_app
+    ports:
+      - "3002:3002"
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: ecommerce    
+    depends_on:
+       mysql:
+         condition: service_healthy
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ecommerce
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:

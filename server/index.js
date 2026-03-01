@@ -85,6 +85,7 @@ app.post("/register", async (req, res) => {
     const checkQuery = `SELECT email, username, phonenumber FROM loginpage WHERE email = ? OR username = ? OR phonenumber = ?`;
     db.query(checkQuery,[email, username, phonenumber],
       async (err, results) => {if (err) {
+	  console.error("REGISTER DB ERROR:", err);    
           return res.status(500).json({
             success: false,
             message: "Database error",
@@ -120,6 +121,7 @@ app.post("/register", async (req, res) => {
           [username, hashedPassword, role, email, phonenumber],
           (err, result) => {
             if (err) {
+            console.error("REGISTER INSERT ERROR:", err);
               return res.status(500).json({
                 success: false,
                 message: "Error inserting data",
@@ -365,7 +367,7 @@ app.get("/products", (req, res) => {
     const data = results.map((item) => ({
       ...item,
       imageUrl: item.image
-        ? `http://localhost:3002/uploads/${item.image}`
+        ? `http://13.234.18.194:3002/uploads/${item.image}`
         : null,
     }));
     res.json(data);
