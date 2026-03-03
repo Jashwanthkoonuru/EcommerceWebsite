@@ -19,7 +19,7 @@ const Cart = () => {
     fetchCart();
   }, []);
   useEffect(() => {
-    const socket = io("http://13.234.18.194:3002");
+    const socket = io("http://13.202.236.238:3002");
     socket.on("cartUpdated", () => {
       fetchCart();
     });
