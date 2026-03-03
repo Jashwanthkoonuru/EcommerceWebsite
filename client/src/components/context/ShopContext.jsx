@@ -42,7 +42,7 @@ export const ShopProvider = ({ children }) => {
         const normalized = data.map((p) => ({
           ...p,
           id: p._id || p.id,
-          imageUrl: p.imageUrl || p.image,
+          imageUrl: `http://13.201.90.254:3002/uploads/${p.image}`,
         }));
         setFurnitureProducts(normalized);
         const q = {};

@@ -69,7 +69,7 @@ const Wishlist = ({ darkMode }) => {
             >
               <div className="overflow-hidden">
                 <img
-                  src={`http://13.202.236.238:3002/uploads/${item.image}`}
+                  src={`http://13.201.90.254:3002/uploads/${item.image}`}
                   alt={item.Product_name}
                   className="w-full h-60 object-cover group-hover:scale-110 transition duration-700"
                 />

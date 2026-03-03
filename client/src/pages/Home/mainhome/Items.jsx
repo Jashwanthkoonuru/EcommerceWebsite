@@ -333,7 +333,7 @@ useEffect(() => {
               
             </div>
             <img
-              src={selectedProduct.imageUrl}
+              src={`http://13.201.90.254:3002/uploads/${selectedProduct.imageUrl}`}
               className="w-full h-40 object-cover rounded mt-3"
               alt=""
             />

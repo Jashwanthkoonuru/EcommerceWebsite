@@ -19,7 +19,7 @@ const Cart = () => {
     fetchCart();
   }, []);
   useEffect(() => {
-    const socket = io("http://13.202.236.238:3002");
+    const socket = io("http://13.201.90.254:3002");
     socket.on("cartUpdated", () => {
       fetchCart();
     });
@@ -73,7 +73,7 @@ const Cart = () => {
             >
               <div className="w-full sm:w-48 md:w-56 lg:w-44 xl:w-52 aspect-[4/3] overflow-hidden rounded-2xl shadow-md flex-shrink-0">
                 <img
-                  src={`http://13.234.18.194:3002/uploads/${item.image}`}
+                  src={`http://13.201.90.254:3002/uploads/${item.image}`}
                   alt={item.Product_name}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
