@@ -367,7 +367,7 @@ app.get("/products", (req, res) => {
     const data = results.map((item) => ({
       ...item,
       imageUrl: item.image
-        ? `http://13.234.18.194:3002/uploads/${item.image}`
+        ? `http://13.202.236.238:3002/uploads/${item.image}`
         : null,
     }));
     res.json(data);
